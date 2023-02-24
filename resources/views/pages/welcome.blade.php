@@ -144,6 +144,24 @@
                     </a>
                   </li>
                   <li>
+                    <a href="{{ route('espace-neuro') }}" class="nav-link text-white">
+                      <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+                        Neurologue
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{ route('espace-chr') }}" class="nav-link text-white">
+                      <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
+                      Chirurgie
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{ route('espace-neuro-chr') }}" class="nav-link text-white">
+                      <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
+                      Neuro-Chirurgie
+                    </a>
+                  </li>
+                  <li>
                     <a href="{{ route('espace-kine') }}" class="nav-link text-white">
                       <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
                       Kinésithérapie

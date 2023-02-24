@@ -4,18 +4,21 @@ use App\Models\presentation;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RVController;
+use App\Http\Controllers\ChrController;
 use App\Http\Controllers\CPNController;
 use App\Http\Controllers\MG_Controller;
 use App\Http\Controllers\orlController;
-use App\Http\Controllers\KineController;
 use App\Http\Controllers\UroController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KineController;
+use App\Http\Controllers\NeuroController;
 use App\Http\Controllers\PediaController;
 use App\Http\Controllers\CardioController;
 use App\Http\Controllers\GynecoController;
 use App\Http\Controllers\DermatoController;
 use App\Http\Controllers\DiabetoController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\NeuroChrController;
 use App\Http\Controllers\ConsultationController;
 
 
@@ -87,5 +90,14 @@ Route::post('/recherche-cpn',[CPNController::class, 'recherche'])->middleware('A
 
 Route::get('/espace-kine',[kineController::class, 'index'])->middleware('Access')->name('espace-kine');
 Route::post('/recherche-kine',[kineController::class, 'recherche'])->middleware('Access')->name('recherche-kine');
+
+Route::get('/espace-neuro',[NeuroController::class, 'index'])->middleware('Access')->name('espace-neuro');
+Route::post('/recherche-neuro',[NeuroController::class, 'recherche'])->middleware('Access')->name('recherche-neuro');
+
+Route::get('/espace-chr',[ChrController::class, 'index'])->middleware('Access')->name('espace-chr');
+Route::post('/recherche-chr',[ChrController::class, 'recherche'])->middleware('Access')->name('recherche-chr');
+
+Route::get('/espace-neuro-chr',[NeuroChrController::class, 'index'])->middleware('Access')->name('espace-neuro-chr');
+Route::post('/recherche-neuro-chr',[NeuroChrController::class, 'recherche'])->middleware('Access')->name('recherche-neuro-chr');
 
 Auth::routes();
