@@ -6,6 +6,7 @@ use App\Models\patients;
 use App\Models\categories;
 use App\Models\rendez_vous;
 use Illuminate\Http\Request;
+use App\Models\consultation;
 use Illuminate\Support\Facades\Session;
 
 class RVController extends Controller
@@ -54,7 +55,13 @@ class RVController extends Controller
         $data->specialite = $request->specialite;
         $data->nom_complet = $request->nom_complet;
         $data->patient_id = $request->patient_id;
-        $data->save();
+        $consultation = consultation::where('patient_id', $request->patient_id)->orderBy('id', 'DESC')->first() ;
+        if($consultation != null){
+            $consultation->update([
+                'rendez_vous' => $request->specialite,
+            ]);
+        }
+         $data->save();
         Session::flash('ok rendez_vous', 'Rendez vous sauvgardé');
         return redirect()->back();
     }

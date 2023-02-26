@@ -11,15 +11,15 @@
 </head>
 <body>
     <div class="container my-5 p-5  " style="">
-        <div class="row border-3     table-bordered">
+        <div class="row border-3  table-bordered">
             <div class="col-2"></div>
-            <div class="col-8">
-                <table class="table table-border-2 table-bordered">
+            <div class="col-8 table-responsive">
+                <table class="table border-danger table-bordered table-secondary align-middle ">
                     <tr class="p-3">
                         <td>
                             <img src="/images/logo.png" alt="" style="height: 9em">
                         </td>
-                        <td>
+                        <td colspan="2">
                             <div class=" ps-5" style="font-size: 15px ; font-weight: 700">Médecine Générale et Spécialité - Consultation à Domicile <br>ECG - Echographie Général - Maternité - Gynéco - Analyses - <br>Kinésithérapie et Réeducation fonctionnelle <br> </div>
                             <div class=" ps-5" style="font-size: 13px ; font-weight: 600">
                                 <b>Adresse : </b>Yeumbeul, Route de Malika à coté du Centre de Gallé <br>
@@ -29,9 +29,13 @@
                             </div>
                         </td>
                     </tr>
-                </table>
-                <div class="text-center my-4 " style="font-size: 15px ; font-weight: 700 ; text-decoration: underline">FICHE PATIENT</div>
-                <table class="table table-border-5">
+                    <tr>
+                        <th colspan="3">
+
+                        <div class="text-center my-4 " style="font-size: 15px ; font-weight: 700 ; text-decoration: underline">FICHE PATIENT</div>
+
+                        </th>
+                    </tr>
                     <tr class="p-3">
                         <td>
                             <b>Prénom : </b>{{ $patient->prenom }}
@@ -68,7 +72,7 @@
                         <td colspan="3">
                             <b>Motif de Consultation {{ $n = $n +1 }} :</b> {{ $consult->motif }}
                         </td>
-                        <td></td><td></td>
+
                     </tr>
                     <tr class="">
                         <td>
@@ -95,18 +99,22 @@
                     <tr class="p-3">
                         <td colspan="3"></td>
                     </tr>
+                   @if ($consult->remarque != 'null')
                     <tr class="p-3">
                         <td colspan="3">
                             <b>Examen clinique</b> <br>
                             {{ $consult->remarque }}
                         </td>
                     </tr>
+                   @endif
+                   @if ($consult->remarque != 'null')
                     <tr class="p-3">
                         <td colspan="3">
                             <b>Traitement</b> <br>
                             {{ $consult->traitement }}
                         </td>
                     </tr>
+                   @endif
                     @if ($consult->image != "default.png")
                         <tr class="p-3 text-center">
                             <td colspan="3">
@@ -130,7 +138,14 @@
                         </tr>
                     @endif
                     <tr class="p-3">
-                        <td colspan="3" ><b>Suivie par  :</b> {{ $consult->specialite }}</td>
+                        <td colspan="2" ><b>Suivie par  :</b> {{ $consult->specialite }}</td>
+                        <td colspan="" ><b>Consultation fait le : </b>{{ $consult->created_at->format('d/m/Y') }}</td>
+                    </tr>
+                    <tr class="p-2">
+                        @if ($consult->rendez_vous != null)
+                            <td colspan="3" ><b>Il/elle a un rendez-vous prévu avec le : </b>{{ $consult->rendez_vous  }}</td>
+                        @endif
+
                     </tr>
                     <tr class="p-3">
                         <td colspan="3" ></td>
@@ -148,6 +163,7 @@
 
             </div>
         </div>
+        <div class="col-2"></div>
     </div>
 </body>
 </html>

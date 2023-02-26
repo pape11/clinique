@@ -8,6 +8,9 @@
                     alert('Patient sauvegardé avec succèes')
                 </script>
             @endif
+            @if (Session::has('ok rendez_vous'))
+                <div class="alert alert-primary">{{ session::get('ok rendez_vous') }}</div>
+            @endif
         </div>
         <h2 style="color: #730C02 ; text-decoration: underline;" class="fs-1 text-center mb-5">Infos du rendez-vous </h2>
     </div>
@@ -39,7 +42,7 @@
                                         <input hidden type="text" class="form-control" id="floatingInputInvalid" placeholder="" name="patient_id" value="{{ $patient->id }}">
                                       </div>
                                 <div class="col-12 col-sm-12">
-                                    <input type="date" class="form-control bg-light border-0" placeholder="Date prochaine rendez-vous" name="rendez_vous" required
+                                    <input type="date" class="form-control bg-light border-0" placeholder="Date prochaine rendez-vous" name="rendez_vous"
                                         style="height: 55px;">
                                 </div>
                                 <div class="col-12">
@@ -72,9 +75,9 @@
                 @if ($count->count() > 0 )
                 <div class="row ms-1 ">
                     <div class="rounded p-2 px-3 mt-3" style="background: #F2B988">
-                        <h3 class="h6">Il avait un rendez vous prévu le
+                        <h3 class="h6">Il avait un rendez vous avec
                         @foreach ($rendez_vous as $item)
-                            {{ $item->rendez_vous }}
+                            {{ $item->specialite }}
                         @endforeach
                     </h3>
                     </div>

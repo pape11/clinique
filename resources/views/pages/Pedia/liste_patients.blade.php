@@ -26,6 +26,7 @@
                     <div class="fs-2 ps-2 pb-2"><b>Salut</b></div>
                     <div class="fs-6 ps-2"><b>{{ Auth::User()->prenom }} {{ Auth::User()->nom }}</b></div>
                     <img src="images/image2.png" alt="" srcset="" width="170">
+                    <div class="fs-6 ps-2 text-center mt-2"><b>{{ Auth::User()->specialite }}</b></div>
                     <b><hr><hr><hr><hr></b>
                 </div>
                 <div class="col-9 ms-4">
@@ -60,9 +61,9 @@
                                     </tr>
                                 @endif
                         </table>
-                        {{-- <div class="d-flex justify-content-center mt-5" >
-                            {{ $rendez_vous->links("pagination.custom") }}
-                        </div> --}}
+                        <div class="d-flex justify-content-center mt-5" >
+                            <img src="images/image4.png" alt="" height="180" class="">
+                        </div>
                     </div>
                 </div>
             </div>
