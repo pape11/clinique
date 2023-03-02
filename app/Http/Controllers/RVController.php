@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\patients;
-use App\Models\categories;
+use App\Models\profession;
 use App\Models\rendez_vous;
-use Illuminate\Http\Request;
 use App\Models\consultation;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class RVController extends Controller
@@ -22,7 +22,7 @@ class RVController extends Controller
        // $rendez_vous = rendez_vous::paginate(4);
         $total =rendez_vous::orderBy('created_at','desc')->get();
         return view('pages.liste-rendez-vous',[
-            'categories' =>categories::all(),
+            'categories' =>profession::all(),
             'total' => $total
         ]);
     }

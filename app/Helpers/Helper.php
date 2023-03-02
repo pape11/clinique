@@ -5,7 +5,6 @@ namespace App\Helpers;
 class Helper
 {
     public static function idGenerator($model , $trow , $length = 5, $prefix){
-        $date = date('m'); //récupérer la date du jour
         $data = $model::orderBy('id','desc')->first();
         if(!$data){
             $og_length = $length; // taille à parcourir dans le boucle ci-dessous
@@ -26,9 +25,7 @@ class Helper
                 $zeros.= "0";
             }
         }
-        // return $prefix.'-'.$zeros.$increment_last_number;
-        // return $prefix.'-'.$date.'-'.$increment_last_number;
-        // return $prefix.$date.'-'.$zeros.$increment_last_number;
+        return $prefix.'-'.$zeros.$increment_last_number;
     }
 
 
