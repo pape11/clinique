@@ -56,9 +56,6 @@
                                     </tr>
                                 @endif
                         </table>
-                        {{-- <div class="d-flex justify-content-center mt-5" >
-                            {{ $rendez_vous->links("pagination.custom") }}
-                        </div> --}}
                     </div>
                 </div>
             </div>

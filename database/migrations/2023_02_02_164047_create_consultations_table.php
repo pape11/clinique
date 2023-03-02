@@ -18,6 +18,7 @@ class CreateConsultationsTable extends Migration
             $table->string('temperature')->nullable();
             $table->string('tension')->nullable();
             $table->string('glycerine')->nullable();
+            $table->string('poids')->nullable();
             $table->string('motif')->nullable();
             $table->string('specialite')->nullable();
             $table->string('tdr')->nullable();
@@ -25,6 +26,9 @@ class CreateConsultationsTable extends Migration
             $table->string('image1')->default('default.png');
             $table->string('image2')->default('default.png');
             $table->string('rendez_vous')->nullable();
+            $table->string('analyse')->nullable();
+            $table->string('radio')->nullable();
+            $table->string('echo')->nullable();
             $table->string('test_grossesse')->nullable();
             $table->mediumText('traitement') ->nullable();
             $table->mediumText('remarque');

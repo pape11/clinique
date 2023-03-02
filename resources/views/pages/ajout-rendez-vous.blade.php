@@ -61,16 +61,20 @@
                                     style="height: 55px;">
                                 </div>
                                 <div class="col-3 col-sm-4">
-                                    <input type="text" class="form-control bg-light border-0" placeholder="Taux de Glycerine" name="glycerine"
+                                    <input type="text" class="form-control bg-light border-0" placeholder="Taux de Glycemine" name="glycerine"
                                     style="height: 55px;">
                                 </div>
-                                <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control bg-light border-0" placeholder="Motif de consultation" name="motif"
+                                <div class="col-3 col-sm-4">
+                                    <input type="text" class="form-control bg-light border-0" placeholder="Poids" name="poids"
+                                    style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <input type="text" class="form-control bg-light border-0" placeholder="Plainte et Symptomes" name="motif"
                                         style="height: 55px;">
                                 </div>
-                                <div class="col-12 col-sm-6">
+                                <div class="col-12 col-sm-4">
                                     <select class="form-select bg-light" aria-label="Default select example" name="test_grossesse" style="height: 55px;">>
-                                        <option selected>Vous etes enceinte ?</option>
+                                        <option selected value="Neant">Vous etes enceinte ?</option>
                                         <option value="Enceinte">OUI</option>
                                         <option value="Neant">NON</option>
                                       </select>
@@ -90,11 +94,34 @@
                                     </div>
                                     <label class="form-check-label text-light fs-6" for="flexSwitchCheckDefault">Veuillez le photo de l'analyse </label>
                                 </div>
-                                <div class="col-12 col-sm-12" id="logo"></div>
+                                <div class="col-12 col-sm-12" style="margin: 0" id="logo"></div>
+                                <div class="col-12 col-sm-12 text-light">
+                                     {{-- partie analyse --}}
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch" id="champs_analyse">
+                                        <label class="form-check-label" for="flexSwitchCheckDefault">Analyse</label>
+                                    </div>
+                                    {{-- recupération formulaire analyse--}}
+                                    <div class="row" id="logo1"></div>
+                                    {{-- partie radio --}}
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch" id="champs_radio">
+                                        <label class="form-check-label" for="flexSwitchCheckChecked">Radio</label>
+                                     </div>
+                                    {{-- recupération formulaire radio--}}
+                                    <div class="row" id="logo2"></div>
+                                   {{-- partie echo --}}
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch" id="champs_echo">
+                                        <label class="form-check-label" for="flexSwitchCheckDisabled">Echo</label>
+                                    </div>
+                                    {{-- recupération formulaire radio--}}
+                                    <div class="row" id="logo3"></div>
+                                </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="form-floating">
                                         <textarea class="form-control" name="remarque" id="floatingTextarea2" style="height: 150px"></textarea>
-                                        <label for="floatingInputInvalid">Resultat d'analyse</label>
+                                        <label for="floatingInputInvalid">Resultat d'analyse / Diagnostic</label>
                                       </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
@@ -152,6 +179,7 @@
             </div>
         </div>
         <script>
+            // Partie image
             var max_fields = 3;
             var wrapper = $(".input_fields_wrap");
             var add_button = $(".add_field_button");
@@ -159,7 +187,7 @@
             var div = "<div>";
             $("#plus_de_champs").click(function (event) {
               event.preventDefault();
-              if (x < max_fields) {
+              if (x <= max_fields) {
                 $(div)
                   .append('<div class="row"><div class="col-11 mb-3"> <input id="remove" type="file" class="form-control bg-light border-0"  name="img'+x+'"style="height: 34px;"></div><div class="col-1"> <button type="button" class="btn text-light"  style="background: #730C02"><a href="" class="remove_field">x</a></button></div></div>')
                   .appendTo("#logo");
@@ -172,5 +200,54 @@
               $(this).parent('#remove').remove();
               x--;
             });
+
+            // Partie analyse
+            var max_fields = 2;
+            var wrapper = $(".input_fields_wrap");
+            var add_button = $(".add_field_button");
+            var x1 = 1;
+            var div = "<div>";
+            $("#champs_analyse").click(function (event) {
+              event.preventDefault();
+              if (x1 < 2) {
+                $(div)
+                  .append('<table class="table text-light ms-3 table-hover table-striped"><tr class="text-light"><td class="col-12 col-sm-4 ms-3"><div class="form-check"><input class="form-check-input" type="checkbox" value="GLYCEMIE" name="analyse[]" ><label class="form-check-label text-light" for="flexCheckDisabled"> GLYCEMIE</label></div></td><td class="col-12 col-sm-4 ms-3"><div class="form-check"><input class="form-check-input" type="checkbox" value="NFS" name="analyse[]" ><label class="form-check-label text-light" for="flexCheckDisabled">NFS</label></div></td><td class="col-12 col-sm-4 ms-3"><div class="form-check"> <input class="form-check-input" type="checkbox" value="TEST D-EMMAL" name="analyse[]" ><label class="form-check-label text-light" for="flexCheckDisabled">TEST D-EMMAL</label></div></td></tr> <tr><td class="col-12 col-sm-4 ms-3"><div class="form-check"><input class="form-check-input" type="checkbox" value="CREATININEMIE" name="analyse[]" ><label class="form-check-label text-light" for="flexCheckDisabled">CREATININEMIE</label></div></td><td ><div class="form-check"><input class="form-check-input" type="checkbox" value="VS" name="analyse[]" ><label class="form-check-label text-light" for="flexCheckDisabled"> VS</label></div></td><td><div class="form-check"><input class="form-check-input" type="checkbox" value="TRANSAMINASES" name="analyse[]" ><label class="form-check-label text-light" for="flexCheckDisabled">TRANSAMINASES </label></div></td></tr><tr><td class="col-12 col-sm-11 ms-3 mt-2" colspan="3"><input type="text" class="form-control bg-light border-0" placeholder="Autres analyse" name="analyse[]" style="height: 55px;"></td></tr></table>').appendTo("#logo1");
+                  x1++;
+              }
+
+            });
+
+            // Partie radio
+            var max_fields = 2;
+            var wrapper = $(".input_fields_wrap");
+            var add_button = $(".add_field_button");
+            var x2 = 1;
+            var div = "<div>";
+            $("#champs_radio").click(function (event) {
+              event.preventDefault();
+              if (x2 < 2) {
+                $(div)
+                  .append('<table class="table text-light ms-3 table-hover table-striped"><tr><td class="col-12 col-sm-4 ms-3"><div class="form-check"><input class="form-check-input" type="checkbox" value="Radio générale" id="flexCheckDisabled" name="radio[]" ><label class="form-check-label text-light" for="flexCheckDisabled">Radio générale</label></div></td><td class="col-12 col-sm-4"><div class="form-check"><input class="form-check-input" type="checkbox" value="Radio digestive" id="flexCheckDisabled" name="radio[]" ><label class="form-check-label text-light"for="flexCheckDisabled">Radio digestive</label></div></td><td class="col-12 col-sm-4"><div class="form-check"><input class="form-check-input" type="checkbox" value="Radio dentaire" id="flexCheckDisabled" name="radio[]" ><label class="form-check-label text-light" for="flexCheckDisabled"> Radio dentaire</label></div></td></tr><tr><td class="col-12 col-sm-4"><div class="form-check"><input class="form-check-input" type="checkbox" value="Radio Uroscanner" id="flexCheckDisabled" name="radio[]" ><label class="form-check-label text-light" for="flexCheckDisabled">Radio Uroscanner</label></div></td><td><div class="form-check"><input class="form-check-input" type="checkbox" value="Radio urinaire" id="flexCheckDisabled" name="radio[]" ><label class="form-check-label text-light" for="flexCheckDisabled">Radio urinaire</label></div></td><td><div class="form-check"><input class="form-check-input" type="checkbox" value="Radio ORL" id="flexCheckDisabled" name="radio[]" ><label class="form-check-label text-light" for="flexCheckDisabled">Radio ORL </label><tr></td ><td class="col-12 col-sm-11 ms-3 my-2" colspan="3"><input type="text" class="form-control bg-light border-0" placeholder="Autres radios" name="radio[]" style="height: 55px;"></td></tr> </table>').appendTo("#logo2");
+                  x2++;
+              }
+
+            });
+
+            // Partie echo
+            var max_fields = 2;
+            var wrapper = $(".input_fields_wrap");
+            var add_button = $(".add_field_button");
+            var x3 = 1;
+            var div = "<div>";
+            $("#champs_echo").click(function (event) {
+              event.preventDefault();
+              if (x3 < 2) {
+                $(div)
+                  .append(' <table class="table text-light ms-3 table-hover table-striped"><tr><td class="col-12 col-sm-4 ms-3"><div class="form-check"><input class="form-check-input" type="checkbox" name="echo[]" value="Echographie générale" id="flexCheckDisabled" ><label class="form-check-label text-light" for="flexCheckDisabled">Echographie générale </label></div></td><td class="col-12 col-sm-4"><div class="form-check"><input class="form-check-input" type="checkbox" name="echo[]" value="Echographie urinaire" id="flexCheckDisabled" ><label class="form-check-label text-light" for="flexCheckDisabled">Echographie urinaire</label></div></td><td class="col-12 col-sm-4"><div class="form-check"><input class="form-check-input" type="checkbox" name="echo[]" value="Echo gynécologique" id="flexCheckDisabled" ><label class="form-check-label text-light" for="flexCheckDisabled"> Echo gynécologique</label></div></td></tr><tr><td class="col-12 col-sm-4"><div class="form-check"><input class="form-check-input" type="checkbox" name="echo[]" value=" Echo ostéoarticulaire" id="flexCheckDisabled" ><label class="form-check-label text-light" for="flexCheckDisabled"> Echo ostéoarticulaire  </label></div></td><td  class="col-12 col-sm-4"><div class="form-check"> <input class="form-check-input" type="checkbox" name="echo[]" value="Echo mammaire" id="flexCheckDisabled" ><label class="form-check-label text-light" for="flexCheckDisabled">Echo mammaire</label></div></td><td  class="col-12 col-sm-4"> <div class="form-check"> <input class="form-check-input" type="checkbox" name="echo[]" value="Echo obstétricale" id="flexCheckDisabled" > <label class="form-check-label text-light" for="flexCheckDisabled">Echo obstétricale</label></div></td></tr><tr><td class="col-12 col-sm-11 ms-3 mt-2" colspan="3"><input type="text" class="form-control bg-light border-0" placeholder="Autres échos" name="echo[]" style="height: 55px;"></td></tr></table>').appendTo("#logo3");
+                  x3++;
+              }
+
+            });
+
           </script>
 @endsection

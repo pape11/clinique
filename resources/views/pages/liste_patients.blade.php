@@ -8,7 +8,7 @@
         <table class="table table-hover table-striped table-warning">
             <thead>
                 <tr>
-                  <th scope="col">#</th>
+                  <th scope="col">#Identifiant</th>
                   <th scope="col">Prenom</th>
                   <th scope="col">Nom</th>
                   <th scope="col">Adresse</th>
@@ -19,7 +19,7 @@
               <tbody class="table-group-divider">
                 @foreach ($patients as $patient)
                 <tr>
-                    <th scope="row">{{ $patient->id }}</th>
+                    <th scope="row">{{ $patient->patient_id }}</th>
                     <td>{{ $patient->prenom }}</td>
                     <td>{{ $patient->nom }}</td>
                     <td>{{ $patient->adresse }}</td>

@@ -20,7 +20,7 @@ class RVController extends Controller
     {
         //
        // $rendez_vous = rendez_vous::paginate(4);
-        $total =rendez_vous::all();
+        $total =rendez_vous::orderBy('created_at','desc')->get();
         return view('pages.liste-rendez-vous',[
             'categories' =>categories::all(),
             'total' => $total
@@ -51,7 +51,9 @@ class RVController extends Controller
     {
         //
         $data = new rendez_vous ;
-         // $data->rendez_vous = $request->rendez_vous;
+        if($request->rendez_vous != null && $request->rendez_vous != ''){
+            $data->rendez_vous = $request->rendez_vous;
+        }
         $data->specialite = $request->specialite;
         $data->nom_complet = $request->nom_complet;
         $data->patient_id = $request->patient_id;
@@ -82,7 +84,7 @@ class RVController extends Controller
         $total =  rendez_vous::where('rendez_vous', 'like', $date)->get();
         $rendez_vous = rendez_vous::where('rendez_vous', 'like', $date)
                             ->orderBy('created_at', 'desc')
-                            ->paginate(4);
+                            ->get();
         // dd($rendez_vous);
         return view('pages.resultat-recherche',[
             'rendez_vous' => $rendez_vous,

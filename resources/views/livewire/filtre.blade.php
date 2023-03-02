@@ -18,7 +18,7 @@
                           <th scope="col">#</th>
                           <th scope="col">Nom complet</th>
                           <th scope="col">Spécialité</th>
-                          <th scope="col">Rendez-vous prise le </th>
+                          <th scope="col">Prise le <i class="ms-4">  </i> | Prévu le</th>
                           <th scope="col " class="text-center" colspan="2">Option</th>
                         </tr>
                       </thead>
@@ -28,7 +28,7 @@
                             <th scope="row">{{ $patient->id }}</th>
                             <td>{{ $patient->nom_complet }}</td>
                             <td>{{ $patient->specialite }}</td>
-                            <td>{{ $patient->created_at }}</td>
+                            <td>{{ $patient->created_at->format('d-m-Y') }} | {{ $patient->rendez_vous }}</td>
                             <td class="text-center"><a href="{{ route('infos-rendez-vous', $patient->id) }}" class="btn text-light" style="background: #bf836082;">Infos</a></td>
                             <td class="text-center"><a href="" class="btn text-light" style="background: #BF8360;">Modifier</a></td>
                           </tr>

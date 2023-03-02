@@ -12,7 +12,7 @@
 <body>
     <div class="container my-5 p-5  " style="">
         <div class="row border-3  table-bordered">
-            <div class="col-2"></div>
+            <div class="col-2" style="padding-top: 15em"> <div class="col text-start"><a href="{{ route('ajout-rendez-vous', $patient->id) }}"><i class="bi bi-arrow-left-circle-fill fs-2" style="color: #F2B988  "></i></a></div></div>
             <div class="col-8 table-responsive">
                 <table class="table border-danger table-bordered table-secondary align-middle ">
                     <tr class="p-3">
@@ -20,7 +20,7 @@
                             <img src="/images/logo.png" alt="" style="height: 9em">
                         </td>
                         <td colspan="2">
-                            <div class=" ps-5" style="font-size: 15px ; font-weight: 700">Médecine Générale et Spécialité - Consultation à Domicile <br>ECG - Echographie Général - Maternité - Gynéco - Analyses - <br>Kinésithérapie et Réeducation fonctionnelle <br> </div>
+                            <div class=" ps-5" style="font-size: 15px ; font-weight: 700">Médecine Générale et Spécialité - Consultation à Domicile <br>ECG - Echographie Général - Maternité - Gynéco - Analyses - Kinésithérapie et Réeducation fonctionnelle <br> </div>
                             <div class=" ps-5" style="font-size: 13px ; font-weight: 600">
                                 <b>Adresse : </b>Yeumbeul, Route de Malika à coté du Centre de Gallé <br>
                                 <b>Téléphone : </b> 33 871 28 05 / 77 588 68 42 / 76 303 00 05 <br>
@@ -36,6 +36,7 @@
 
                         </th>
                     </tr>
+                </table><table class="table border-danger table-bordered table-secondary align-middle ">
                     <tr class="p-3">
                         <td>
                             <b>Prénom : </b>{{ $patient->prenom }}
@@ -69,36 +70,68 @@
                         </td>
                     </tr>
                    <tr class="">
-                        <td colspan="3">
-                            <b>Motif de Consultation {{ $n = $n +1 }} :</b> {{ $consult->motif }}
-                        </td>
+                    @if ($consult->motif != 'null')
+                    <td colspan="3">
+                        <b>Motif de Consultation {{ $n = $n +1 }} :</b> {{ $consult->motif }}
+                    </td>
+                   @endif
 
                     </tr>
                     <tr class="">
-                        <td>
-                            <b>Température : </b>{{ $consult->temperature }} °C
+                        <td class="col-sm-3 col">
+                            <b>Température : </b>{{ $consult->temperature ?  $consult->temperature.' °C': 'Néant' }}
                         </td>
                         <td>
-                            <b>Tension : </b>{{ $consult->tension }} mmHg
+                            <b>Tension : </b>{{ $consult->tension ?  $consult->tension.' mmHg': 'Néant' }}
                         </td>
                         <td>
-                            <b>Taux de Glycérine : </b>{{ $consult->tension }} ml
+                            <b>Taux de Glycérine : </b>{{ $consult->glycerine ?  $consult->glycerine.' ml': 'Néant'  }}
                         </td>
                     </tr>
                     <tr class="">
+                        <td>
+                            <b>Poids : </b>{{ $consult->poids ?  $consult->poids.' Kg': 'Néant' }}
+                        </td>
+                        <td>
+                            <b>TDR : </b>{{ $consult->tdr ?  $consult->tdr : 'Néant' }}
+                        </td>
                         <td>
                             <b>Teste Grossesse : </b>{{ $consult->test_grossesse }}
-                        </td>
-                        <td>
-                            <b>TDR : </b>{{ $consult->tdr }}
-                        </td>
-                        <td>
-
                         </td>
                     </tr>
                     <tr class="p-3">
                         <td colspan="3"></td>
                     </tr>
+                    @if ($consult->analyse != 'null' && $consult->analyse != Null)
+                     <tr class="p-3">
+                         <td>
+                             <b>Analyses</b> <br>
+                         </td>
+                         <td colspan="2">
+                             {{ $consult->analyse }}
+                         </td>
+                     </tr>
+                    @endif
+                    @if ($consult->radio != 'null' && $consult->radio != Null)
+                     <tr class="p-3">
+                         <td>
+                             <b>Radios</b> <br>
+                         </td>
+                         <td colspan="2">
+                             {{ $consult->radio }}
+                         </td>
+                     </tr>
+                    @endif
+                    @if ($consult->echo != 'null' && $consult->echo != Null)
+                     <tr class="p-3">
+                         <td>
+                             <b>Echos</b> <br>
+                         </td>
+                         <td colspan="2">
+                             {{ $consult->echo }}
+                         </td>
+                     </tr>
+                    @endif
                    @if ($consult->remarque != 'null')
                     <tr class="p-3">
                         <td colspan="3">
@@ -109,7 +142,7 @@
                    @endif
                    @if ($consult->remarque != 'null')
                     <tr class="p-3">
-                        <td colspan="3">
+                        <td  colspan="3">
                             <b>Traitement</b> <br>
                             {{ $consult->traitement }}
                         </td>

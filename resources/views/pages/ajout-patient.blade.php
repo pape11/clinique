@@ -4,9 +4,6 @@
         <div class="row mt-5">
             @if (Session::has('ok'))
                 <div class="alert alert-primary">{{ session::get('ok') }}</div>
-                <script>
-                    alert('Patient sauvegardé avec succèes')
-                </script>
             @endif
         </div>
         <h2 style="color: #730C02 ; text-decoration: underline;" class="fs-1 text-center mb-5">Ajouter un patient </h2>

@@ -15,7 +15,7 @@ class CreateRendezVousesTable extends Migration
     {
         Schema::create('rendez_vouses', function (Blueprint $table) {
             $table->id();
-            // $table->string('rendez_vous');
+            $table->string('rendez_vous')->default('Néant');
             $table->string('specialite');
             $table->string('nom_complet')->nullable();
             $table->string('etat')->default('false');

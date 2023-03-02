@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Helper;
 use App\Models\patients;
 use App\Models\consultation;
 use Illuminate\Http\Request;
@@ -44,6 +45,9 @@ class PatientController extends Controller
     {
         //
         $data = new patients ;
+        $patient_id = Helper::idGenerator(new patients, 'patient_id', 5 , 'PT' ); //Génére un nouveau patient_id
+        //dd($patient_id);
+        $data->patient_id = $patient_id;
         $data->prenom = $request->prenom;
         $data->nom = $request->nom;
         $data->age = $request->age;
@@ -54,7 +58,7 @@ class PatientController extends Controller
             $data->rv = $request->rv;
        }
         $data->save() ;
-        Session::flash('ok', 'patient sauvgardé');
+        Session::flash('ok', 'patient sauvgardé son id est '.$patient_id);
         return back();
     }
 

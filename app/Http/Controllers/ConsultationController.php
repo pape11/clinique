@@ -37,8 +37,7 @@ class ConsultationController extends Controller
      */
     public function store(Request $request)
     {
-        //
-
+        //dd($request);
         $data = new consultation ;
         if($request->temperature != "" && $request->temperature != null ){
             $data->temperature = $request->temperature;
@@ -51,6 +50,9 @@ class ConsultationController extends Controller
         }
         if($request->motif != "" && $request->motif != null ){
             $data->motif = $request->motif;
+        }
+        if($request->poids != "" && $request->poids != null ){
+            $data->poids = $request->poids;
         }
         if($request->remarque != "" && $request->remarque != null ){
             $data->remarque = $request->remarque;
@@ -71,6 +73,33 @@ class ConsultationController extends Controller
         }
         if($request->patient_id != "" && $request->patient_id != null ){
             $data->patient_id = $request->patient_id;
+        }
+        if($request->analyse != "" && $request->analyse != null ){
+            $analyse = "";
+           foreach($request->analyse as $item){
+                if($item != null){
+                    $analyse .= $item.", ";
+                }
+           }
+           $data->analyse = $analyse.'...';
+        }
+        if($request->radio != "" && $request->radio != null ){
+            $radio = "";
+           foreach($request->radio as $item){
+                if($item != null){
+                    $radio .= $item.", ";
+                }
+           }
+           $data->radio = $radio.'...';
+        }
+        if($request->echo != "" && $request->echo != null ){
+            $echo = "";
+           foreach($request->echo as $item){
+                if($item != null){
+                    $echo .= $item.", ";
+                }
+           }
+           $data->echo = $echo.'...';
         }
         if($request->image != "" && $request->image != null ){
             $image = $request->image ;

@@ -44,7 +44,7 @@
                               <div hidden>{{ $n = 0  }}</div>
                               <tbody class="table-group-divider">
                                 @foreach ($rendez_vous as $patient)
-                                    @if ($patient->specialite == "ORl")
+                                    @if ($patient->specialite == "ORL")
                                         <tr>
                                             <th scope="row">{{ $patient->id }}</th>
                                             <td>{{ $patient->nom_complet }}</td>

@@ -45,7 +45,7 @@ Route::get('/ajout-patient',[PatientController::class, 'create'])->name('ajout-p
 Route::post('/ajout-patient',[PatientController::class, 'store'])->name('ajout-patient');
 Route::get('/supprimer-patient/{id}',[PatientController::class, 'destroy'])->name('supprimer-patient');
 Route::get('/modifier-patien/{id}',[PatientController::class, 'edit'])->name('modifier-patien');
-Route::get('/dossier-medical/{id}',[PatientController::class, 'show'])->name('dossier-medical');
+Route::get('/dossier-medical/{id}',[PatientController::class, 'show'])->middleware('Access')->name('dossier-medical');
 
 Route::post('/modifier-patient',[MG_Controller::class, 'update'])->name('modifier-patient');
 Route::post('/recherche',[MG_Controller::class, 'show'])->name('recherche');
