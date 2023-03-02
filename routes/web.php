@@ -101,3 +101,8 @@ Route::get('/espace-neuro-chr',[NeuroChrController::class, 'index'])->middleware
 Route::post('/recherche-neuro-chr',[NeuroChrController::class, 'recherche'])->middleware('Access')->name('recherche-neuro-chr');
 
 Auth::routes();
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
