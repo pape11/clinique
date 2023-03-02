@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\patients;
+use App\Models\profession;
 use App\Models\rendez_vous;
-use App\Models\categories;
 use Illuminate\Http\Request;
 
 
@@ -20,7 +20,7 @@ class CPNController extends Controller
         //
         $rendez_vous = rendez_vous::all();
         return view('pages.CPN.liste_patients',[
-            'categories' =>categories::all(),
+            'categories' =>profession::all(),
             'rendez_vous' => $rendez_vous,
             'total' => $rendez_vous
         ]);

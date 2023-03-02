@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\patients;
-use App\Models\rendez_vous;
 use App\Models\categories;
+use App\Models\profession;
+use App\Models\rendez_vous;
 use Illuminate\Http\Request;
 
 class DiabetoController extends Controller
@@ -19,7 +20,7 @@ class DiabetoController extends Controller
        // $rendez_vous = rendez_vous::paginate(4);
        $rendez_vous = rendez_vous::all();
        return view('pages.Diabeto.liste_patients',[
-           'categories' =>categories::all(),
+           'categories' =>profession::all(),
            'rendez_vous' => $rendez_vous,
            'total' => $rendez_vous
        ]);

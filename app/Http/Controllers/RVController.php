@@ -89,7 +89,7 @@ class RVController extends Controller
         return view('pages.resultat-recherche',[
             'rendez_vous' => $rendez_vous,
             'total' => $total,
-            'categories' =>categories::all(),
+            'categories' =>profession::all(),
         ]);
     }
     public function infos($id){
