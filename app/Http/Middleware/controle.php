@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
-class MG
+class controle
 {
     /**
      * Handle an incoming request.
@@ -24,10 +24,13 @@ class MG
             Session::flash('ACCES','Veuiller vous connectez d\'abord pour acceder à cette page !!!');
             return redirect()->route('login');
         }
-        if($user->specialite !== "Médecin Général"){
-            Session::flash('ACCESS','Veuiller vous connectez d\'abord en tant que medecin générale !!!');
-            return redirect()->route('welcome');
+        $patient = Session::get('patient') ;
+        if($patient->status == 'false' || Session::has('access')){
+            // Session::remove('patient');
+            return $next($request);
+        }else{
+            return redirect()->Route('connexion-dossier');
         }
-       return $next($request);
+
     }
 }

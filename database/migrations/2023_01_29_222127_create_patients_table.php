@@ -23,6 +23,7 @@ class CreatePatientsTable extends Migration
             $table->string('sexe');
             $table->string('telephone');
             $table->string('etat')->default("false");
+            $table->string('status')->default("false");
             $table->string('rv')->default("false");
             $table->timestamps();
         });

@@ -45,11 +45,20 @@ Route::get('/ajout-patient',[PatientController::class, 'create'])->name('ajout-p
 Route::post('/ajout-patient',[PatientController::class, 'store'])->name('ajout-patient');
 Route::get('/supprimer-patient/{id}',[PatientController::class, 'destroy'])->name('supprimer-patient');
 Route::get('/modifier-patien/{id}',[PatientController::class, 'edit'])->name('modifier-patien');
-Route::get('/dossier-medical/{id}',[PatientController::class, 'show'])->middleware('Access')->name('dossier-medical');
+Route::get('/dossier-medical/{id}',[PatientController::class, 'show'])->middleware('controle')->name('dossier-medical');
 
 Route::post('/modifier-patient',[MG_Controller::class, 'update'])->name('modifier-patient');
 Route::post('/recherche',[MG_Controller::class, 'show'])->name('recherche');
 Route::get('/espace-medecin-generale',[MG_Controller::class, 'index'])->middleware('MG')->name('espace-medecin-generale');
+Route::get('/MG-ajout-rendez-vous/{id}',[MG_Controller::class, 'create'])->middleware('MG')->name('MG.ajout-rendez-vous');
+Route::get('/MG-listes-patients',[MG_Controller::class, 'liste'])->middleware('MG')->name('MG.listes-patients');
+Route::get('/MG-ajout-patient',[MG_Controller::class, 'save'])->middleware('MG')->name('MG.ajout-patient');
+Route::get('/MG-tdr-positive',[MG_Controller::class, 'tdr'])->middleware('MG')->name('MG-tdr-positive');
+Route::post('/recherche_tdr',[MG_Controller::class, 'recherche_tdr'])->name('recherche.tdr');
+Route::get('/Confidentialite',[MG_Controller::class, 'Confidentialite'])->name('Confidentialite');
+Route::get('/controle-access/{id}',[MG_Controller::class, 'controle_access'])->name('controle-access');
+Route::get('/connexion-dossier',[MG_Controller::class, 'connexion_dossier'])->name('connexion-dossier');
+Route::post('/connexion-dossier',[MG_Controller::class, 'verification'])->name('connexion-dossier');
 
 Route::post('/save-consultation',[ConsultationController::class, 'store'])->name('save-consultation');
 
@@ -101,8 +110,3 @@ Route::get('/espace-neuro-chr',[NeuroChrController::class, 'index'])->middleware
 Route::post('/recherche-neuro-chr',[NeuroChrController::class, 'recherche'])->middleware('Access')->name('recherche-neuro-chr');
 
 Auth::routes();
-
-
-Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-});

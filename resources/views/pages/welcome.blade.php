@@ -4,16 +4,34 @@
     {{-- bloc 1 --}}
     <div class="container">
        @if (Session::has('ACCESS'))
-           <div class="alert alert-danger mt-3">
-               {{ Session::get('ACCESS') }}
-           </div>
+          <div class="pt-3">
+            <div class="alert alert-danger">
+                {{ Session::get('ACCESS') }}
+            </div>
+          </div>
        @endif
        @if (Session::has('ACCESS-C'))
-           <div class="alert alert-danger mt-3">
-               {{ Session::get('ACCESS-C') }}
-           </div>
+            <div class="pt-3">
+                <div class="alert alert-danger">
+                    {{ Session::get('ACCESS-C') }}
+                </div>
+            </div>
        @endif
    </div>
+   <div class="accordion row" id="accordionExample" hidden>
+    <div class="accordion-item col-3">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Accordion Item #2
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        </div>
+      </div>
+    </div>
+  </div>
    <div class="container p-5">
        <div class="row">
            <div class="col-6 mt-5 pt-5">

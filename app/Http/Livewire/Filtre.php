@@ -19,7 +19,7 @@ class Filtre extends Component
 
         return view('livewire.filtre',[
             'rendez_vous' => (empty($this->activefilters))
-                        ?  $rendez_vous = rendez_vous::orderBy('created_at','desc')->get()
+                        ?  $rendez_vous = rendez_vous::all()
                          :  $rendez_vous = rendez_vous::whereIn('specialite' , array_keys($this->activefilters))->get()
         ]);
     }

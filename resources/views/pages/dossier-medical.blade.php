@@ -12,7 +12,11 @@
 <body>
     <div class="container my-5 p-5  " style="">
         <div class="row border-3  table-bordered">
-            <div class="col-2" style="padding-top: 15em"> <div class="col text-start"><a href="{{ route('ajout-rendez-vous', $patient->id) }}"><i class="bi bi-arrow-left-circle-fill fs-2" style="color: #F2B988  "></i></a></div></div>
+            @if (Auth::User()->specialite == "Médecin Général")
+                 <div class="col-2" style="padding-top: 15em"> <div class="col text-start"><a href="{{ route('MG.ajout-rendez-vous', $patient->id) }}"><i class="bi bi-arrow-left-circle-fill fs-2" style="color: #F2B988  "></i></a></div></div>
+            @else
+                <div class="col-2" style="padding-top: 15em"> <div class="col text-start"><a href="{{ route('ajout-rendez-vous', $patient->id) }}"><i class="bi bi-arrow-left-circle-fill fs-2" style="color: #F2B988  "></i></a></div></div>
+            @endif
             <div class="col-8 table-responsive">
                 <table class="table border-danger table-bordered table-secondary align-middle ">
                     <tr class="p-3">

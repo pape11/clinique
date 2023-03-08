@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'Access' => \App\Http\Middleware\Access::class,
         'MG' => \App\Http\Middleware\MG::class,
         'Cardio' => \App\Http\Middleware\Cardio::class,
+        'controle' => \App\Http\Middleware\controle::class,
     ];
 }

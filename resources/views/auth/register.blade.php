@@ -75,11 +75,8 @@
                                         <option value="Gynécologue">Gynécologue</option>
                                         <option value="CPN">CPN</option>
                                         <option value="Pédiatre">Pédiatre</option>
-                                        <option value="Kinésithérape">Kinésithérape</option>
+                                        <option value="Kinésithéape">Kinésithéape</option>
                                         <option value="Sécrétaire">Sécrétaire</option>
-                                        <option value="Chirurge">Chirurge</option>
-                                        <option value="Neuro-Chirurge">Neuro-Chirurge</option>
-                                        <option value="Neurologue">Neurologue</option>
                                         <option value="Autre">Autre</option>
                                       </select>
                                     @error('specialite')
